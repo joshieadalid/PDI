@@ -1,0 +1,51 @@
+Inciso b:
+
+clc
+clear all
+close all
+
+%Leer Imagen
+image=imread("Bob.jpg");
+
+%Obtener tamaño de la imagen
+[width,height]=size(image(:,:,1));
+
+%Dividir la imagen en cuadrantes
+Rgray=image(:,1:floor(height/3),1);
+Ggray=image(:,floor(height/3)+1:floor(2*(height/3)),2);
+Bgray=image(:,floor(2*(height/3))+1:end,3);
+
+R=cat(3,Rgray,zeros(size(Rgray)),zeros(size(Rgray)));
+G=cat(3,zeros(size(Ggray)),Ggray,zeros(size(Ggray)));
+B=cat(3,zeros(size(Bgray)),zeros(size(Bgray)),Bgray);
+
+%Concatenar las cuatro partes de la imagen
+imagenResultante=[R,G,B];
+
+imshow(imagenResultante)
+--------------------------------
+Inciso c:
+
+clc
+clear all
+close all
+
+%Leer Imagen
+image=imread("Bob.jpg");
+
+%Obtener tamaño de la imagen
+[width,height]=size(image(:,:,1));
+
+%Dividir la imagen en cuadrantes
+Rgray=image(1:floor(width/3),1:end,1);
+Ggray=image(floor(width/3)+1:floor(2*(width/3)),1:end,2);
+Bgray=image(floor(2*(width/3))+1:end,1:end,3);
+
+R=cat(3,Rgray,zeros(size(Rgray)),zeros(size(Rgray)));
+G=cat(3,zeros(size(Ggray)),Ggray,zeros(size(Ggray)));
+B=cat(3,zeros(size(Bgray)),zeros(size(Bgray)),Bgray);
+
+%Concatenar las cuatro partes de la imagen
+imagenResultante=[R;G;B];
+
+imshow(imagenResultante)
